@@ -26,20 +26,20 @@ We return to modifying the tables we made in lab 3.  Keeping in mind what you no
 
 ## Level Two and beyond (`ORDER BY`)
 
-The next level of understanding (this is  the first one you learn *after* Magic Missile) comes from the `ORDER BY` 
+The next level of understanding (this is  the first one you learn *after* Magic Missile) comes from the `ORDER BY`
 clause.  As you might expect, this controls the order of the entries in the table.  Try these:
 
 ```
 SELECT * FROM inventory ORDER BY item;
 SELECT * FROM inventory order by amount;
 ```
-	
+
 It works with more complicated queries too:
 
 ````
 SELECT * FROM inventory, prices WHERE inventory.id=prices.id ORDER BY unit;
 ````
-	
+
 Additionally, just on the off chance you have enough entries in your tables for this to make sense, you can order by more than one column:
 
 ````
@@ -47,7 +47,7 @@ SELECT * FROM inventory, prices WHERE inventory.id=prices.id ORDER BY unit, item
 ````
 
 ## The `GROUP BY` clause
-	
+
 The next clause on our magical mystery tour is the GROUP BY clause (now we're at Fireball level)
 
 SOME functions are designed to work with **aggregates**.  Try these two commands:
@@ -60,7 +60,7 @@ There are several aggregate functions, but the mariaDB manuals certainly doesn't
 
 <http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html>
 
-I checked them and they all work.  You should try a few.  Pay attention to the difference between 
+I checked them and they all work.  You should try a few.  Pay attention to the difference between
 
 `count(*)`, `count(<col name>)` and `count(DISTINCT <col name>)`
 
@@ -143,11 +143,11 @@ That's where `UNION` comes from:
 ```
 SELECT * FROM inventory LEFT JOIN prices ON inventory.id=prices.id;
 SELECT * FROM inventory RIGHT JOIN prices ON inventory.id=prices.id;
-	
+
 SELECT * FROM inventory LEFT JOIN prices ON inventory.id=prices.id UNION
 SELECT * FROM inventory RIGHT JOIN prices ON inventory.id=prices.id;
 ```
-	
+
 Pretty spiffy isn't it… and it really DOES act like the union… there were a few rows shared by both of the component queries and they didn't show up more than once in the final output.  You can get around this behavior (which can matter sometimes by adding the option keyword ALL:
 
 ```
@@ -257,7 +257,7 @@ do
  echo "scale=0; $RANDOM/32.767"|bc
 done > col1A
 ```
-(Don't be surprised if the prompt changes after the first line). 
+(Don't be surprised if the prompt changes after the first line).
 
 Now repeat for `col2A`, `col1B`, and `col2B`.
 
@@ -367,7 +367,7 @@ Now try this:
 SELECT * FROM randA where A BETWEEN 2 AND 9 UNION SELECT * FROM randA where A BETWEEN 2 AND 9;
 ```
 The key to understanding that output is to realize that `UNION` truly does mean `UNION` (no repeats
-allowed-- in other words the output is, by default, at least in Type 1 Normal Form). 
+allowed-- in other words the output is, by default, at least in Type 1 Normal Form).
 
 You can force it to include everything like this:
 ```{sql}
@@ -393,27 +393,27 @@ Different database engines also can provide different types of indexes.  The `To
 ## To Do
 
 Make sure and complete the following:
-- [ ] Include the URL pointing to your group's github repository via canvas.  Be certain your canvas groups match your github groups
-- [ ] Create the `PD_` tables during your `poorDesign` rewrite.
-- [ ] Each student should type up all the samples (NOTE:  copy-and-paste is bad-- just watching is bad:  type them up and talk to your group-mate(s) about what it means).  Nothing to turn in for this-- but a few tables should be generated (see canvas rubric)
-- [ ] Read the contents of these links (see the lab for details of what to skim):
-   * [Aggregation functions](http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html)
-   * [The SELECT statement](https://mariadb.com/kb/en/mariadb/select/)
-   * [SubQueries](http://beginner-sql-tutorial.com/sql-subquery.htm)
-   * [Wikipedia page on Correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery)
-   * [Wikipedia page on ER models](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)
-   * [ER tutorial](http://www.cs.sfu.ca/CourseCentral/354/zaiane/material/notes/Chapter2/node1.html)
-   * [Relationships in relational databases](http://www.techrepublic.com/article/relational-databases-defining-relationships-between-database-tables/)
-   * [Creating tables with a foreign key](http://dev.mysql.com/doc/refman/5.6/en/create-table-foreign-keys.html)
-   * [Good overview and recap](http://www.databasejournal.com/sqletc/article.php/1469521/Introduction-to-Relational-Databases.htm)
-   * [Overview of indexes](https://mariadb.com/kb/en/mariadb/what-is-an-index/) **Note:** be sure to read all the pages-- this one has arrows to lead to the next page!
-   * [Wikipedia entry on B Trees](https://en.wikipedia.org/wiki/B-tree)
-   * [Amazing set of slides on indexing and hashing](http://www.enseignement.polytechnique.fr/informatique/profs/Michalis.Vazirgiannis/course_slides/4_indexing_hashing.pdf)
-   * [Spatial indexes in MariaDB](https://mariadb.com/kb/en/mariadb/spatial-index/)
-   * [Fractal Tree indexes](https://en.wikipedia.org/wiki/Fractal_tree_index)
-- [ ] Do these tutorials (nothing to turn in-- but do the problems)
-   * [A second SELECT tutorial](http://www.sqlcourse2.com/)
-- [ ] Do these exercises:
-   - [ ] [Entity-Relation Exercise](#er-exercise)
-   - [ ] [Foreign Key Exercise](#foreign-key-exercise)
-   - [ ] Make sure your tables exist for the shell/mysql index and union examples (where applicable).
+- [x] Include the URL pointing to your group's github repository via canvas.  Be certain your canvas groups match your github groups
+- [x] Create the `PD_` tables during your `poorDesign` rewrite.
+- [x] Each student should type up all the samples (NOTE:  copy-and-paste is bad-- just watching is bad:  type them up and talk to your group-mate(s) about what it means).  Nothing to turn in for this-- but a few tables should be generated (see canvas rubric)
+- [x] Read the contents of these links (see the lab for details of what to skim):
+   * ~~[Aggregation functions](http://dev.mysql.com/doc/refman/5.7/en/group-by-functions.html)~~
+   * ~~[The SELECT statement](https://mariadb.com/kb/en/mariadb/select/)~~
+   * ~~[SubQueries](http://beginner-sql-tutorial.com/sql-subquery.htm)~~
+   * ~~[Wikipedia page on Correlated subqueries](https://en.wikipedia.org/wiki/Correlated_subquery)~~
+   * ~~[Wikipedia page on ER models](https://en.wikipedia.org/wiki/Entity%E2%80%93relationship_model)~~
+   * ~~[ER tutorial](http://www.cs.sfu.ca/CourseCentral/354/zaiane/material/notes/Chapter2/node1.html)~~
+   * ~~[Relationships in relational databases](http://www.techrepublic.com/article/relational-databases-defining-relationships-between-database-tables/)~~
+   * ~~[Creating tables with a foreign key](http://dev.mysql.com/doc/refman/5.6/en/create-table-foreign-keys.html)~~
+   * ~~[Good overview and recap](http://www.databasejournal.com/sqletc/article.php/1469521/Introduction-to-Relational-Databases.htm)~~
+   * ~~[Overview of indexes](https://mariadb.com/kb/en/mariadb/what-is-an-index/)~~ **Note:** be sure to read all the pages-- this one has arrows to lead to the next page!
+   * ~~[Wikipedia entry on B Trees](https://en.wikipedia.org/wiki/B-tree)~~
+   * ~~[Amazing set of slides on indexing and hashing](http://www.enseignement.polytechnique.fr/informatique/profs/Michalis.Vazirgiannis/course_slides/4_indexing_hashing.pdf)~~
+   * ~~[Spatial indexes in MariaDB](https://mariadb.com/kb/en/mariadb/spatial-index/)~~
+   * ~~[Fractal Tree indexes](https://en.wikipedia.org/wiki/Fractal_tree_index)~~
+- [x] Do these tutorials (nothing to turn in-- but do the problems)
+   * ~~[A second SELECT tutorial](http://www.sqlcourse2.com/)~~
+- [x] Do these exercises:
+   - [x] [Entity-Relation Exercise](#er-exercise)
+   - [x] [Foreign Key Exercise](#foreign-key-exercise)
+   - [x] Make sure your tables exist for the shell/mysql index and union examples (where applicable).
